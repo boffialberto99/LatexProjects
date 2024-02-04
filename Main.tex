@@ -1,0 +1,115 @@
+\documentclass[11pt, twoside]{article}
+
+% Settings
+\input{Settings/DocumentSettings}
+\input{Settings/UserSettings}
+
+% Document begin
+\begin{document}
+\justifying
+
+% Set indentation to zero
+\setlength{\parindent}{0pt}
+
+% Set paragraph space
+\setlength{\parskip}{5pt}
+
+% Title page
+\input{TitlePage}
+
+% \vspace{3cm}
+% Abstract and table of contents
+\input{Abstract}
+\newpage
+
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+
+\newpage
+\renewcommand{\nomname}{List of Symbols}
+%\renewcommand{\nompreamble}{\begin{multicols}{1}} % n columns
+%\renewcommand{\nompostamble}{\end{multicols}}
+
+% -----------------------------------------
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Symbols}{%
+  \ifstrequal{#1}{D}{Superscripts \& Subscripts}{%
+  \ifstrequal{#1}{C}{Greek Symbols}}}%
+]}
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+% -----------------------------------------
+
+% Here is the nomenclature list
+%Acronyms
+\nomenclature[A]{A}{Cross sectional area}
+\nomenclature[A]{D}{Cross sectional diameter}
+\nomenclature[A]{m}{mass}
+\nomenclature[A]{n}{Number of moles}
+\nomenclature[A]{N$_{tot}$}{Number of moles of the mixture}
+\nomenclature[A]{P}{Pressure}
+\nomenclature[A]{K$_p$}{Equilibrium constant in terms of pressure}
+\nomenclature[A]{h}{Specific enthalpy}
+\nomenclature[A]{s}{Specific entropy}
+\nomenclature[A]{c$_{p}$}{Specific heat at constant pressure}
+\nomenclature[A]{R}{Specific gas constant}
+\nomenclature[A]{c}{Speed of sound}
+\nomenclature[A]{T}{Temperature}
+\nomenclature[A]{M}{Mach number}
+\nomenclature[A]{e}{Specific internal energy}
+
+\nomenclature[D]{(\cdot)^*}{Critical conditions}
+\nomenclature[D]{(\cdot)_0}{Total conditions}
+\nomenclature[D]{(\cdot)_i}{Related to the "i" species}
+\nomenclature[D]{(\cdot)$_{N_2}$}{Related to molecular nitrogen}
+\nomenclature[D]{(\cdot)$_{O_2}$}{Related to molecular oxygen}
+\nomenclature[D]{(\cdot)_c}{Related to the beginning of the convergent section}
+\nomenclature[D]{(\cdot)_e}{Related to exhaust}
+
+\nomenclature[C]{$\theta_{conv}$}{Convergent contraction angle}
+\nomenclature[C]{$\theta_{div}$}{Divergent expansion angle}
+\nomenclature[C]{$\chi$}{Molar fraction}
+\nomenclature[C]{$\Delta$h_f}{Standard heat of formation}
+\nomenclature[C]{$\rho$}{Density}
+\nomenclature[C]{$\gamma$}{Adiabatic index}
+
+\onecolumn
+\begin{multicols}{2}
+\printnomenclature
+\end{multicols}
+\thispagestyle{empty}
+\clearpage
+\newpage
+
+% Start numeric page numbering
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\renewcommand{\arraystretch}{1.4}
+
+%% --- begin written document ---
+\newpage
+\input{Sections/1.Section/Section1}
+\newpage
+\input{Sections/2.Section/Section2}
+\newpage
+\input{Sections/3.Section/Section3}
+\newpage
+\input{Sections/4.Section/Section4}
+\input{Sections/5.Section/Section5}
+\newpage
+
+% Appendix definition
+%\label{Appendix}
+%\input{Sections/Appendices/Appendices}
+
+% Bibliography print
+\newpage
+\thispagestyle{empty}
+\nocite{*}
+\printbibliography
+
+\end{document}
